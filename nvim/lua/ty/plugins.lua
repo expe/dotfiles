@@ -19,6 +19,12 @@ return require "packer".startup(
     }
     use {"JoosepAlviste/nvim-ts-context-commentstring"}
 
+    use {
+        'kyazdani42/nvim-tree.lua',
+        requires = 'kyazdani42/nvim-web-devicons',
+        config = function() require'nvim-tree'.setup {} end
+    }
+
     use {"junegunn/vim-easy-align"}
     use {"ojroques/nvim-bufdel"}
     use {"mg979/vim-visual-multi"}
@@ -66,12 +72,17 @@ return require "packer".startup(
     use {"rust-lang/rust.vim"}
 
     -- JS/TS
-    use {"othree/yajs.vim"}
-    use {"MaxMEllon/vim-jsx-pretty"}
-    use {"heavenshell/vim-jsdoc"}
-    use {"elzr/vim-json"}
-    use {"neoclide/jsonc.vim"}
-    use {"jxnblk/vim-mdx-js"}
+    use {
+      "prettier/vim-prettier",
+      ft = { "html", "javascript", "typescript", "css"},
+      run = "yarn install"
+    }
+    -- use {"othree/yajs.vim"}
+    -- use {"MaxMEllon/vim-jsx-pretty"}
+    -- use {"heavenshell/vim-jsdoc"}
+    -- use {"elzr/vim-json"}
+    -- use {"neoclide/jsonc.vim"}
+    -- use {"jxnblk/vim-mdx-js"}
     -- HTML
     use {"othree/html5.vim"}
     use {"mattn/emmet-vim"}
