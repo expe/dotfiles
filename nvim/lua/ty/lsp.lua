@@ -37,15 +37,36 @@ end
 
 -- Use a loop to conveniently call 'setup' on multiple servers and
 -- map buffer local keybindings when the language server attaches
-local servers = { 'pyright', 'rust_analyzer', 'tsserver' }
-for _, lsp in ipairs(servers) do
-  nvim_lsp[lsp].setup {
-    on_attach = on_attach,
+-- local servers = { 'rust_analyzer', 'tsserver' }
+-- for _, lsp in ipairs(servers) do
+--   nvim_lsp[lsp].setup {
+--     on_attach = on_attach,
+--     flags = {
+--       debounce_text_changes = 150,
+--     }
+--   }
+-- end
+
+nvim_lsp.tsserver.setup({
+    on_attach=on_attach,
     flags = {
-      debounce_text_changes = 150,
+      debounce_text_changes = 150
     }
-  }
-end
+})
+
+nvim_lsp.rust_analyzer.setup({
+    on_attach=on_attach,
+    flags = {
+      debounce_text_changes = 150
+    },
+    settings = {
+        ["rust-analyzer"] = {
+            procMacro = {
+              enable = false
+            }
+        }
+    }
+})
 
 require('compe').setup {
   enabled = true;
@@ -80,5 +101,3 @@ require('compe').setup {
     luasnip = true;
   };
 }
-
-
