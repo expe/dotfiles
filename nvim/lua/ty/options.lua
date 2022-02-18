@@ -34,6 +34,8 @@ Option.g {
   conceallevel = 0,
   laststatus = 2,
   wrap = true,
+  ignorecase = true,
+  smartcase = true,
   linebreak = true,
   list = true,
   listchars = "tab:»·,trail:·",
@@ -101,6 +103,10 @@ vim.g.mkdp_auto_start = false
 vim.g.vim_json_syntax_conceal = false
 vim.g.override_nvim_web_devicons = true
 vim.g.rustfmt_autosave = 1
+vim.g['prettier#autoformat'] = 1
+vim.g['prettier#autoformat_require_pragma'] = 0
+
+
 
 -- local configs = parsers.get_parser_configs()
 -- local ft_str = table.concat(vim.tbl_map(function(ft) return configs[ft].filetype or ft end, parsers.available_parsers()), ',')
