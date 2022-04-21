@@ -24,8 +24,8 @@ end
 
 Option.g {
   scrolloff = 10,
-  clipboard="unnamedplus",
-  termguicolors = true,
+  clipboard = "unnamed",
+  -- termguicolors = true,
   mouse = "a",
   hidden = true,
   showmode = false,
@@ -44,10 +44,9 @@ Option.g {
   autoread = true,
   updatetime = 500,
   redrawtime = 500,
-  virtualedit = "onemore",
-  complete = ".,w,b,u,t,k",
-  completeopt = "menu,menuone,noinsert,noselect",
-  formatoptions = "jtcroql",
+  -- complete = ".,w,b,u,t,k",
+  -- completeopt = "menu,menuone,noinsert,noselect",
+  -- formatoptions = "jtcroql",
   inccommand = "nosplit",
   shortmess = "atIcF",
   isfname = table.concat(
@@ -66,7 +65,6 @@ Option.g {
   swapfile = false,
   diffopt = "internal,filler,closeoff,algorithm:patience,iwhiteall",
   splitbelow = true,
-  emoji = false,
   indentexpr="nvim_treesitter#indent()",
   showmatch = false
 }
