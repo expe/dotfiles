@@ -17,6 +17,8 @@ M.map("n", "<Leader>e", "<cmd>Telescope file_browser<cr>")
 
 M.map("n", "<c-l>", "<cmd>bnext<cr>")
 M.map("n", "<c-h>", "<cmd>bprevious<cr>")
+M.map("n", "<Leader><Right>", "<cmd>BufferLineMoveNext<cr>")
+M.map("n", "<Leader><Left>", "<cmd>BufferLineMovePrev<cr>")
 
 M.map("n", "<f10>", "<cmd>Neotree toggle<cr>")
 

@@ -4,6 +4,7 @@ return require "packer".startup(
     use {"ggandor/leap.nvim"}
     require('leap').set_default_keymaps()
 
+    use "lukas-reineke/indent-blankline.nvim"
     use {"nvim-lua/popup.nvim"}
     use {"nvim-lua/plenary.nvim"}
     use {"wbthomason/packer.nvim"}
@@ -239,6 +240,9 @@ return require "packer".startup(
     use {"TroyFletcher/vim-colors-synthwave"}
     use {"tjdevries/colorbuddy.vim"}
     use {"tjdevries/gruvbuddy.nvim"}
+    use {"folke/tokyonight.nvim"}
+    use {"catppuccin/nvim", as = "catppuccin"}
+
 
     -- Editor Config
     use {"editorconfig/editorconfig-vim"}
@@ -315,6 +319,10 @@ return require "packer".startup(
     use {"hrsh7th/cmp-buffer"}
     use {"hrsh7th/cmp-path"}
     use {"hrsh7th/cmp-cmdline"}
+
+    use {"L3MON4D3/LuaSnip"}
+    use {"saadparwaiz1/cmp_luasnip"}
+
 
     -- LSP
     use {"neovim/nvim-lspconfig"}

@@ -25,7 +25,7 @@ end
 Option.g {
   scrolloff = 10,
   clipboard = "unnamed",
-  -- termguicolors = true,
+  termguicolors = true,
   mouse = "a",
   hidden = true,
   showmode = false,
@@ -76,6 +76,7 @@ Option.b {
 }
 Option.w {
   number = true,
+  relativenumber = true,
   numberwidth = 1,
   signcolumn = "yes",
   spell = false,
@@ -103,8 +104,8 @@ vim.g.override_nvim_web_devicons = true
 vim.g.rustfmt_autosave = 1
 vim.g['prettier#autoformat'] = 1
 vim.g['prettier#autoformat_require_pragma'] = 0
-
-
+vim.opt.cursorline = true
+vim.opt.cursorlineopt = "number"
 
 -- local configs = parsers.get_parser_configs()
 -- local ft_str = table.concat(vim.tbl_map(function(ft) return configs[ft].filetype or ft end, parsers.available_parsers()), ',')
