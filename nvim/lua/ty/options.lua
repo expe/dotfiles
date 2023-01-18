@@ -1,5 +1,4 @@
 -- Options
--- local parsers = require'nvim-treesitter.parsers'
 local Type = {GLOBAL_OPTION = "o", WINDOW_OPTION = "wo", BUFFER_OPTION = "bo"}
 local add_options = function(option_type, options)
   if type(options) ~= "table" then
@@ -23,8 +22,12 @@ Option.b = function(options)
 end
 
 Option.g {
+  tabstop = 4,
+  shiftwidth = 4,
+  softtabstop = 4,
+  expandtab = true,
   scrolloff = 10,
-  clipboard = "unnamed",
+  clipboard = "unnamedplus",
   termguicolors = true,
   mouse = "a",
   hidden = true,
@@ -38,7 +41,7 @@ Option.g {
   smartcase = true,
   linebreak = true,
   list = true,
-  listchars = "tab:»·,trail:·",
+  -- listchars = "tab:»·,trail:·",
   wildmenu = true,
   wildmode = "full",
   autoread = true,
@@ -46,7 +49,8 @@ Option.g {
   redrawtime = 500,
   -- complete = ".,w,b,u,t,k",
   -- completeopt = "menu,menuone,noinsert,noselect",
-  -- formatoptions = "jtcroql",
+  formatoptions = "jtcrql",
+
   inccommand = "nosplit",
   shortmess = "atIcF",
   isfname = table.concat(
@@ -105,7 +109,6 @@ vim.g.rustfmt_autosave = 1
 vim.g['prettier#autoformat'] = 1
 vim.g['prettier#autoformat_require_pragma'] = 0
 vim.opt.cursorline = true
-vim.opt.cursorlineopt = "number"
 
 -- local configs = parsers.get_parser_configs()
 -- local ft_str = table.concat(vim.tbl_map(function(ft) return configs[ft].filetype or ft end, parsers.available_parsers()), ',')

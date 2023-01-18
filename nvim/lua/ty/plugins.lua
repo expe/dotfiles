@@ -1,11 +1,9 @@
 return require "packer".startup(
   function(use)
     -- Packer can manage itself as an optional plugin
-    use {"ggandor/leap.nvim"}
-    require('leap').set_default_keymaps()
 
-    use "lukas-reineke/indent-blankline.nvim"
-    use {"nvim-lua/popup.nvim"}
+    -- use "lukas-reineke/indent-blankline.nvim"
+    -- use {"nvim-lua/popup.nvim"}
     use {"nvim-lua/plenary.nvim"}
     use {"wbthomason/packer.nvim"}
     use {"tpope/vim-surround"}
@@ -23,6 +21,111 @@ return require "packer".startup(
       end
     }
     use {"JoosepAlviste/nvim-ts-context-commentstring"}
+
+    use {'kevinhwang91/nvim-bqf', ft = 'qf'}
+
+
+    use {"ojroques/nvim-bufdel"}
+    use {"mg979/vim-visual-multi"}
+
+    -- Lines
+    use {
+        "hoob3rt/lualine.nvim",
+        requires = {'kyazdani42/nvim-web-devicons', opt = true}
+    }
+    use {'akinsho/bufferline.nvim', requires = 'kyazdani42/nvim-web-devicons'}
+
+    -- Colors
+    use {"morhetz/gruvbox"}
+    use {"chuling/vim-equinusocio-material"}
+    use {"romgrk/github-light.vim"}
+    use {"Khaledgarbaya/night-owl-vim-theme"}
+    use {'mhartington/oceanic-next'}
+    use {"TroyFletcher/vim-colors-synthwave"}
+    use {"tjdevries/colorbuddy.vim"}
+    use {"tjdevries/gruvbuddy.nvim"}
+    use {"folke/tokyonight.nvim"}
+    use {"catppuccin/nvim", as = "catppuccin"}
+
+
+    -- Editor Config / formatting
+    use {"editorconfig/editorconfig-vim"}
+    use {
+      "prettier/vim-prettier",
+      ft = { "astro", "html", "javascript", "typescript", "css"},
+      run = "yarn install"
+    }
+
+    -- Git
+    use {
+      "lewis6991/gitsigns.nvim",
+      config = function()
+        require "gitsigns".setup {
+          debug_mode = false,
+          current_line_blame = false,
+          current_line_blame_opts = {
+            virt_text = true,
+            virt_text_pos = 'eol', -- 'eol' | 'overlay' | 'right_align'
+            delay = 1000,
+            ignore_whitespace = false,
+          },
+          current_line_blame_formatter = '<author>, <author_time:%Y-%m-%d> - <summary>',
+          signs = {
+            add = {hl = "GitGutterAdd", text = "│"},
+            change = {hl = "GitGutterChange", text = "│"},
+            delete = {hl = "GitGutterDelete", text = "_"},
+            topdelete = {hl = "GitGutterDelete", text = "‾"},
+            changedelete = {hl = "GitGutterChangeDelete", text = "~"}
+          }
+        }
+      end
+    }
+
+    use {"rust-lang/rust.vim"}
+    use {"tbastos/vim-lua"}
+
+    use {
+      "norcalli/nvim-colorizer.lua",
+      config = function()
+        require "colorizer".setup()
+      end
+    }
+
+    use {"nvim-treesitter/nvim-treesitter"}
+    use "nvim-treesitter/nvim-treesitter-textobjects"
+    use {"nvim-treesitter/playground"}
+
+    use {"hrsh7th/nvim-cmp"}
+    use {"hrsh7th/cmp-nvim-lsp"}
+    use {"hrsh7th/cmp-buffer"}
+    use {"hrsh7th/cmp-path"}
+    use {"hrsh7th/cmp-cmdline"}
+
+    use {"L3MON4D3/LuaSnip"}
+    use {"saadparwaiz1/cmp_luasnip"}
+
+
+    -- LSP
+    use {"neovim/nvim-lspconfig"}
+    use "jose-elias-alvarez/null-ls.nvim"
+    -- use {"glepnir/lspsaga.nvim"}
+    --
+    use {
+      'nvim-telescope/telescope.nvim',
+      requires = { {'nvim-lua/plenary.nvim'} }
+    }
+    use {"nvim-telescope/telescope-github.nvim"}
+    use {"nvim-telescope/telescope-packer.nvim"}
+    use {"nvim-telescope/telescope-node-modules.nvim"}
+    -- use {"nvim-telescope/telescope-fzy-native.nvim"}
+    use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
+    use { "nvim-telescope/telescope-file-browser.nvim" }
+    use {'nvim-telescope/telescope-ui-select.nvim' }
+
+    use {'ThePrimeagen/harpoon'}
+
+    -- use {"kyazdani42/nvim-web-devicons"}
+    -- use {"yamatsum/nvim-nonicons"}
 
     use {
       "nvim-neo-tree/neo-tree.nvim",
@@ -219,128 +322,9 @@ return require "packer".startup(
 
           vim.cmd([[nnoremap \ :Neotree reveal<cr>]])
         end
+
+
     }
-
-    -- use {"junegunn/vim-easy-align"}
-    use {"ojroques/nvim-bufdel"}
-    use {"mg979/vim-visual-multi"}
-    use {
-        "hoob3rt/lualine.nvim",
-        requires = {'kyazdani42/nvim-web-devicons', opt = true}
-    }
-    use {'akinsho/bufferline.nvim', requires = 'kyazdani42/nvim-web-devicons'}
-    use {"akinsho/nvim-bufferline.lua"}
-
-    -- Colors
-    use {"morhetz/gruvbox"}
-    use {"chuling/vim-equinusocio-material"}
-    use {"romgrk/github-light.vim"}
-    use {"Khaledgarbaya/night-owl-vim-theme"}
-    use {'mhartington/oceanic-next'}
-    use {"TroyFletcher/vim-colors-synthwave"}
-    use {"tjdevries/colorbuddy.vim"}
-    use {"tjdevries/gruvbuddy.nvim"}
-    use {"folke/tokyonight.nvim"}
-    use {"catppuccin/nvim", as = "catppuccin"}
-
-
-    -- Editor Config
-    use {"editorconfig/editorconfig-vim"}
-
-    -- Git
-    use {
-      "lewis6991/gitsigns.nvim",
-      config = function()
-        require "gitsigns".setup {
-          debug_mode = false,
-          current_line_blame = false,
-          current_line_blame_opts = {
-            virt_text = true,
-            virt_text_pos = 'eol', -- 'eol' | 'overlay' | 'right_align'
-            delay = 1000,
-            ignore_whitespace = false,
-          },
-          current_line_blame_formatter = '<author>, <author_time:%Y-%m-%d> - <summary>',
-          signs = {
-            add = {hl = "GitGutterAdd", text = "│"},
-            change = {hl = "GitGutterChange", text = "│"},
-            delete = {hl = "GitGutterDelete", text = "_"},
-            topdelete = {hl = "GitGutterDelete", text = "‾"},
-            changedelete = {hl = "GitGutterChangeDelete", text = "~"}
-          }
-        }
-      end
-    }
-
-    -- -- Markdown
-    use {"tpope/vim-markdown", ft = "markdown"}
-    use {"rhysd/vim-grammarous"}
-    -- Rust
-    use {"rust-lang/rust.vim"}
-
-    -- JS/TS
-    use {
-      "prettier/vim-prettier",
-      ft = { "html", "javascript", "typescript", "css"},
-      run = "yarn install"
-    }
-    -- use {"othree/yajs.vim"}
-    -- use {"MaxMEllon/vim-jsx-pretty"}
-    -- use {"heavenshell/vim-jsdoc"}
-    -- use {"elzr/vim-json"}
-    -- use {"neoclide/jsonc.vim"}
-    -- use {"jxnblk/vim-mdx-js"}
-    -- HTML
-    use {"othree/html5.vim"}
-    use {"mattn/emmet-vim"}
-    use {"skwp/vim-html-escape"}
-    use {"kana/vim-textobj-user"}
-    use {"whatyouhide/vim-textobj-xmlattr"}
-    -- CSS
-    use {"hail2u/vim-css3-syntax"}
-    use {
-      "norcalli/nvim-colorizer.lua",
-      config = function()
-        require "colorizer".setup()
-      end
-    }
-    -- Reason
-    -- use{ "reasonml-editor/vim-reason-plus" }
-    -- Go
-    -- use{ "fatih/vim-go" }
-    -- Lua
-    use {"tbastos/vim-lua"}
-
-    use {"nvim-treesitter/nvim-treesitter"}
-    use {"nvim-treesitter/playground"}
-
-    use {"hrsh7th/nvim-cmp"}
-    use {"hrsh7th/cmp-nvim-lsp"}
-    use {"hrsh7th/cmp-buffer"}
-    use {"hrsh7th/cmp-path"}
-    use {"hrsh7th/cmp-cmdline"}
-
-    use {"L3MON4D3/LuaSnip"}
-    use {"saadparwaiz1/cmp_luasnip"}
-
-
-    -- LSP
-    use {"neovim/nvim-lspconfig"}
-    use {"glepnir/lspsaga.nvim"}
-    --
-    use {
-      'nvim-telescope/telescope.nvim',
-      requires = { {'nvim-lua/plenary.nvim'} }
-    }
-    use {"nvim-telescope/telescope-github.nvim"}
-    use {"nvim-telescope/telescope-packer.nvim"}
-    use {"nvim-telescope/telescope-node-modules.nvim"}
-    -- use {"nvim-telescope/telescope-fzy-native.nvim"}
-    use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
-    use { "nvim-telescope/telescope-file-browser.nvim" }
-
-    -- use {"kyazdani42/nvim-web-devicons"}
-    -- use {"yamatsum/nvim-nonicons"}
   end
 )
 

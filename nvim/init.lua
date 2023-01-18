@@ -1,9 +1,12 @@
 require "ty.plugins"
-require "ty.mappings"
+require "ty.keymaps"
 require "ty.options"
 require "ty.telescope"
 require "ty.lsp"
+require "ty.treesitter"
+require "ty.harpoon"
 
+local autocmd = vim.api.nvim_create_autocmd
 local cmd = vim.cmd
 local fn = vim.fn
 local g = vim.g
@@ -15,7 +18,7 @@ local g = vim.g
 require("tokyonight").setup({
       -- your configuration comes here
   -- or leave it empty to use the default settings
-  style = "storm", -- The theme comes in three styles, `storm`, `moon`, a darker variant `night` and `day`
+  style = "night", -- The theme comes in three styles, `storm`, `moon`, a darker variant `night` and `day`
   light_style = "day", -- The theme is used when the background is set to light
   transparent = false, -- Enable this to disable setting the background color
   terminal_colors = true, -- Configure the colors used when opening a `:terminal` in Neovim
@@ -53,6 +56,16 @@ require("tokyonight").setup({
     }
     hl.CursorLineNr = { fg = c.fg }
   end,
+})
+autocmd('TextYankPost', {
+    group = yank_group,
+    pattern = '*',
+    callback = function()
+        vim.highlight.on_yank({
+            higroup = 'Visual',
+            timeout = 50,
+        })
+    end,
 })
 
 
