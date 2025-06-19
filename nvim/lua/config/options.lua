@@ -7,3 +7,4 @@ opt.wrap = true
 opt.scrolloff = 10
 opt.shortmess:append({ W = true, I = true, c = true, s = true })
 opt.completeopt = { "menu", "menuone", "noselect", "noinsert" }
+vim.g.snacks_animate = false
