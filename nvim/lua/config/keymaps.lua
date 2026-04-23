@@ -2,9 +2,9 @@
 -- Default keymaps that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/keymaps.lua
 -- Add any additional keymaps here
 --
-vim.keymap.set("n", "<C-p>", "<cmd>FzfLua files<cr>")
-vim.keymap.set("n", "<leader>r", "<cmd>FzfLua live_grep<cr>")
-vim.keymap.set("n", "<F10>", "<cmd>Neotree toggle<cr>")
+-- vim.keymap.set("n", "<C-p>", "<cmd>FzfLua files<cr>")
+-- vim.keymap.set("n", "<leader>r", "<cmd>FzfLua live_grep<cr>")
+-- vim.keymap.set("n", "<F10>", "<cmd>Neotree toggle<cr>")
 
 -- Remap adding surrounding to Visual mode selection
 vim.keymap.del("x", "ys")
